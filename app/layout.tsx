@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Pixelify_Sans, Inter, Jersey_10 } from "next/font/google";
 import "./globals.css";
+import {
+  ClerkProvider,
+} from '@clerk/nextjs'
 
 // ❗ Correct imports
 import { ThemeProvider } from "next-themes";
@@ -38,6 +41,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
+    <ClerkProvider>
     <html lang="en" suppressHydrationWarning className="dark">
       <body
         className={`${geistSans.variable} ${geistMono.variable}
@@ -57,5 +61,6 @@ export default function RootLayout({
         </ThemeProvider>
       </body>
     </html>
+    </ClerkProvider>
   );
 }
